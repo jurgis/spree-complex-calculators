@@ -1,0 +1,17 @@
+---
+en:
+  calculator_names:
+    weight_and_quantity: Weight and Quantity
+    
+  weight_unit: kg?
+  complex_calculator_rates: Complex Calculator Rates
+  complex_calculator_rates_description: Configure rates for the complex calculators
+  complex_calculators: Complex Calculators
+  weight: Weight
+  quantity: Quantity
+  add_new: Add New
+  rate_type_0: Weight
+  rate_type_1: Count
+  from: From
+  to: To
+  

@@ -1,0 +1,23 @@
+<h1><%= t("complex_calculators") %></h1>
+
+<table class="index">
+  <thead>
+    <tr>
+      <th><%= t("shipping_method")%></th>
+      <th><%= t("calculator")%></th>
+      <th><%= t("action")%></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @calculators.each do |calculator| %>
+      <tr>
+        <td><%=h calculator.name %></td>
+        <td><%=h calculator.description %></td>
+        <td><%= link_to_with_icon('edit', t("edit"), edit_admin_complex_calculator_rate_path(calculator)) %></td>
+      </tr>
+    <% end %>
+    <% if @calculators.empty? %>
+      <tr><td colspan="5"><%= t(:none) %></td></tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,8 @@
+---
+lv:
+  calculator_names:
+    weight_and_quantity: Svars un skaits
+    
+  weight_unit: kg?
+  complex_calculator_rates: Complex calculator rates (LV)
+  complex_calculator_rates_description: Configure rates for complex calculators (LV)
