@@ -6,15 +6,12 @@ class Calculator::Base < Calculator
   
   before_save :set_is_complex
 
-    
   # Register the calculator
   def self.register
     super
+    Coupon.register_calculator(self)
     ShippingMethod.register_calculator(self)
-    
-    # Not sure if I need to register all those calculators
-    # Coupon.register_calculator(self)
-    # ShippingRate.register_calculator(self)    
+    ShippingRate.register_calculator(self)
   end
 
   # Return calculator name
@@ -22,11 +19,7 @@ class Calculator::Base < Calculator
     calculable.respond_to?(:name) ? calculable.name : calculable.to_s
   end
 
-  def unit
-    self.class.unit
-  end
-  
-  # supported types for the specified calculator (weight, count, ...)
+  # supported types for the specified calculator (weight, qnty, ...)
   def supported_types
     ComplexCalculatorRate.all_types
   end
@@ -34,19 +27,26 @@ class Calculator::Base < Calculator
   def sorted_rates
     complex_calculator_rates.all(:order => "rate_type ASC, from_value ASC")
   end
+  
+  protected  
 
   # Get the rate from the database or nil if could not find the rate for specified rate type
-  def get_rate(value, rate_type = 0)
-    rate = ComplexCalculatorRate.find(:first, :conditions => ["calculator_id = ? and rate_type = ? and from_value <= ? and ? <= to_value",
-                                      self.id, rate_type, value, value])
-    rate.nil? ? nil : rate.rate
+  def get_rate(value, rate_type)
+    ComplexCalculatorRate.find_rate(self.id, rate_type, value)
   end
   
-  private
+  # Get the previous rate if rate for the specified value does not exist, return nil if no previous rate can be find
+  def get_previous_rate(value, rate_type)
+    ComplexCalculatorRate.find_previous_rate(self.id, rate_type, value)
+  end
   
   # Before saving the record set that this is a complex calculator
   def set_is_complex
     self.is_complex = true
   end
   
+  # get line items
+  def order_to_line_items(order_or_line_items)
+    order_or_line_items.is_a?(Order) ? order_or_line_items.line_items : order_or_line_items
+  end
 end
