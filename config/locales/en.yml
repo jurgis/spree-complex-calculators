@@ -3,6 +3,9 @@ en:
   calculator_names:
     weight_and_quantity: Weight and Quantity
     
+  errors:
+    from_value_greater_than_to_value: "'From' value is greater than 'To' value"
+    
   complex_calculator_rates: Complex Calculator Rates
   complex_calculator_rates_description: Configure rates for the complex calculators
   complex_calculators: Complex Calculators

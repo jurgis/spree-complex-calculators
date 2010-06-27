@@ -1,8 +1,19 @@
 ---
 lv:
   calculator_names:
-    weight_and_quantity: Svars un skaits
+    weight_and_quantity: "Svars un skaits"
     
-  weight_unit: kg?
-  complex_calculator_rates: Complex calculator rates (LV)
-  complex_calculator_rates_description: Configure rates for complex calculators (LV)
+  errors:
+    from_value_greater_than_to_value: "'No' vērtība ir lielāka par 'Līdz' vērtību"
+    
+  complex_calculator_rates: "Komplekso kalkulatoru aprēķinu tabula"
+  complex_calculator_rates_description: "Aizpildiet komplekso kalkulatoru aprēķinu tabulas"
+  complex_calculators: "Kompleksie kalkulatori"
+  weight: "Svars"
+  quantity: "Skaits"
+  add_new: "Pievienot jaunu ierakstu"
+  rate_type_0: "Svars"
+  rate_type_1: "Skaits"
+  from: "No"
+  to: "Līdz"
+  default_item_weight: "Noklusētais preces svars"

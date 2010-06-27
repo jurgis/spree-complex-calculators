@@ -10,7 +10,7 @@ class ComplexCalculatorRate < ActiveRecord::Base
   validates_numericality_of :from_value, :to_value, :rate, :allow_blank => true
   
   def validate
-    errors.add(:base, "'From' value should be less than 'To' value") if from_value >= to_value #TODO: add to the yml file
+    errors.add(:base, I18n.t('errors.from_value_greater_than_to_value')) if from_value > to_value
   end
 
   # All complex calculator rate types
